@@ -91,12 +91,12 @@ fig = px.bar(
     color_continuous_scale="viridis",
 )
 fig.update_layout(
-    # Set plot background colour
+    
     plot_bgcolor = '#0e1117'
 )
 fig.update_traces(
-    marker_line_color='#252d3d',
-    marker_line_width = 0.25
+    marker_line_color='#0e1117',
+    marker_line_width = 1
 )
 
 # Display fig 1
@@ -160,8 +160,8 @@ fig_2.update_layout(
     yaxis=dict(gridcolor='#252d3d', gridwidth=0.5)
 )
 fig_2.update_traces(
-    marker_line_color='#252d3d',
-    marker_line_width = 0.25
+    marker_line_color='#3c4963',
+    marker_line_width = 0.5
 )
 
 if len(team) > 0:

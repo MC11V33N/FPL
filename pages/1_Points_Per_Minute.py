@@ -14,6 +14,8 @@ import numpy as np
 import plotly.express as px
 import plotly.io as pio
 
+st.set_page_config(layout="wide")
+
 st.image('fpl.png', use_column_width=True)
 
 
@@ -89,18 +91,12 @@ fig = px.bar(
     color_continuous_scale="viridis",
 )
 fig.update_layout(
-    yaxis=dict(
-        gridcolor='gray',
-        griddash = 'dash'
-    ),
     # Set plot background colour
-    plot_bgcolor = '#0e1117',
-    paper_bgcolor = '#0e1117'
+    plot_bgcolor = '#0e1117'
 )
-
 fig.update_traces(
-    marker_line_color='black',
-    marker_line_width = 0.5
+    marker_line_color='#252d3d',
+    marker_line_width = 0.25
 )
 
 # Display fig 1
@@ -158,7 +154,14 @@ fig_2 = px.scatter(
 fig_2.update_layout(
     legend=dict(
         orientation="h", yanchor="bottom", x=0.15, y=-0.25, font=dict(size=14)
-    )
+    ),
+    plot_bgcolor = '#0e1117',
+    xaxis=dict(gridcolor='#252d3d', gridwidth=0.5),
+    yaxis=dict(gridcolor='#252d3d', gridwidth=0.5)
+)
+fig_2.update_traces(
+    marker_line_color='#252d3d',
+    marker_line_width = 0.25
 )
 
 if len(team) > 0:

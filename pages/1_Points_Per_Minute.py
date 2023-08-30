@@ -91,12 +91,13 @@ fig = px.bar(
 fig.update_layout(
     yaxis=dict(
         gridcolor='gray',
-        griddash = 'dash',
-        # Set plot background colour
-        plot_bgcolor = '#0e1117',
-        paper_bgcolor = '#0e1117', 
-    )
+        griddash = 'dash'
+    ),
+    # Set plot background colour
+    plot_bgcolor = '#0e1117',
+    paper_bgcolor = '#0e1117'
 )
+
 fig.update_traces(
     marker_line_color='black',
     marker_line_width = 0.5

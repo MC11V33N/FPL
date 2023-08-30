@@ -87,6 +87,13 @@ fig = px.bar(
     },
     color_continuous_scale="viridis",
 )
+fig.update_layout(
+    xaxis=dict(gridcolor='gray'),
+    yaxis=dict(gridcolor='gray')
+)
+fig.update_traces(
+    marker_line_color='black', 
+)
 
 # Display fig 1
 st.header = 'Best value players:'

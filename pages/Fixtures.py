@@ -22,5 +22,5 @@ players = pd.json_normalize(r["elements"])
 teams = pd.json_normalize(r["teams"])
 
 # Subset data
-players_sub = players[
-]
+# players_sub = players[
+# ]

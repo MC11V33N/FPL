@@ -99,7 +99,7 @@ fig.update_layout(
 )
 fig.update_traces(
     marker_line_color='black',
-    marker_line_wdith = 0.5
+    marker_line_width = 0.5
 )
 
 # Display fig 1

@@ -41,14 +41,29 @@ players_sub = players[
         "bps",
     ]
 ]
-players_sub = players_sub.merge(teams[["id", "name"]], left_on="team", right_on="id")
+
+# Merge players with teams
+players_sub = players_sub.merge(teams[["id", "name", 'played']], left_on="team", right_on="id")
 players_sub["team"] = players_sub["name"]
 del players_sub["name"]
+
 # Calculate points per minute
-players_sub["ppm"] = players_sub["total_points"] / players_sub["minutes"]
+players_sub["ppm"] = players_sub["total_points"].astype(float) / players_sub["minutes"].astype(float)
+# Set nan and inf values to 0
 players_sub["ppm"] = players_sub["ppm"].replace([np.nan, -np.inf], 0)
-# set ppm to 0 if the player has played under 3 full games
-players_sub.loc[players_sub["minutes"] < 270, "ppm"] = 0
+# Set ppm to 0 if the player has played under 5 full games in the season
+# or has played in less than 1/3 of their teams games
+players_sub.loc[
+    (
+        (
+            (players_sub["minutes"] < 90*1) |
+            (
+                players_sub['minutes'].astype(float) < (players_sub['played'].astype(float)/3 * 90)
+            )
+        )
+        , "ppm"
+    ) 
+] = 0
 
 
 # Def fig 1
@@ -68,6 +83,7 @@ fig = px.bar(
         "ppm": "Points per Minute",
         "web_name": "Name",
         "minutes": "Minutes Played",
+        'played': 'Games played'
     },
     color_continuous_scale="viridis",
 )
@@ -109,6 +125,7 @@ fig_2 = px.scatter(
         "ppm": "Points per Minute",
         "web_name": "Name",
         "minutes": "Minutes Played",
+        'played': 'Games played'
     },
     size="minutes",
     color="ppm",

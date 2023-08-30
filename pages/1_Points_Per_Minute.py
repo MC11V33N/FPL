@@ -93,8 +93,8 @@ fig.update_layout(
         gridcolor='gray',
         griddash = 'dash',
         # Set plot background colour
-        plot_bg_color = '#0e1117',
-        paper_bg_color = '#0e1117', 
+        plot_bgcolor = '#0e1117',
+        paper_bgcolor = '#0e1117', 
     )
 )
 fig.update_traces(

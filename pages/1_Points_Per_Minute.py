@@ -12,6 +12,10 @@ import json
 import requests
 import numpy as np
 import plotly.express as px
+import plotly.io as pio
+
+# Set plot background colour
+plot_bg_color = '#0e1117' 
 
 st.image('fpl.png', use_column_width=True)
 
@@ -88,11 +92,14 @@ fig = px.bar(
     color_continuous_scale="viridis",
 )
 fig.update_layout(
-    xaxis=dict(gridcolor='gray'),
-    yaxis=dict(gridcolor='gray')
+    yaxis=dict(
+        gridcolor='gray',
+        griddash = 'dash'
+    )
 )
 fig.update_traces(
-    marker_line_color='black', 
+    marker_line_color='black',
+    marker_line_wdith = 0.5
 )
 
 # Display fig 1

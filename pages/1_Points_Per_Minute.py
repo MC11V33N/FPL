@@ -14,9 +14,6 @@ import numpy as np
 import plotly.express as px
 import plotly.io as pio
 
-# Set plot background colour
-plot_bg_color = '#0e1117' 
-
 st.image('fpl.png', use_column_width=True)
 
 
@@ -94,7 +91,9 @@ fig = px.bar(
 fig.update_layout(
     yaxis=dict(
         gridcolor='gray',
-        griddash = 'dash'
+        griddash = 'dash',
+        # Set plot background colour
+        plot_bg_color = '#0e1117' 
     )
 )
 fig.update_traces(
